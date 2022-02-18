@@ -1,43 +1,30 @@
-import { useRecoilValue } from "recoil";
-import { toDoSelector, toDoState } from "../atoms";
+import React from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { Categories, categoryState, toDoSelector } from "../atoms";
 
 import CreateToDo from "./CreateToDo";
+import SelectCategory from "./SelectCategory";
 import ToDo from "./ToDo";
 
 const ToDoList = () => {
 	/* const [toDos, setToDos] = useRecoilState(toDoState); // get + modify value
 	const value = useRecoilValue(toDoState); // Get value from atom
 	const modFn = useSetRecoilState(toDoState); // Modify value of atom */
-	const [toDo, doing, done] = useRecoilValue(toDoSelector);
+	const toDos = useRecoilValue(toDoSelector);
 	return (
 		<div>
 			<h1>To Dos</h1>
 			<hr />
+			<SelectCategory />
 			<CreateToDo />
-			<h2>To Do</h2>
-			<ul>
-				{toDo.map((toDo) => (
-					<ToDo key={toDo.id} {...toDo} />
-				))}
-			</ul>
-			<hr />
-			<h2>Doing</h2>
-			<ul>
-				{doing.map((toDo) => (
-					<ToDo key={toDo.id} {...toDo} />
-				))}
-			</ul>
-			<hr />
-			<h2>Done</h2>
-			<ul>
-				{done.map((toDo) => (
-					<ToDo key={toDo.id} {...toDo} />
-				))}
-			</ul>
-			<hr />
+			{toDos.map((toDo) => (
+				<ToDo key={toDo.id} {...toDo} />
+			))}
 		</div>
 	);
 };
+
+export default ToDoList;
 
 /* interface IForm {
 	email: string;
@@ -136,4 +123,3 @@ const ToDoList = () => {
 		</div>
 	);
 }; */
-export default ToDoList;
