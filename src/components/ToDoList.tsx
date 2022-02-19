@@ -1,10 +1,27 @@
 import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
+import styled from "styled-components";
 import { Categories, categoryState, toDoSelector } from "../atoms";
 
 import CreateToDo from "./CreateToDo";
 import SelectCategory from "./SelectCategory";
 import ToDo from "./ToDo";
+
+const ToDoPage = styled.div`
+	margin-top: 2rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+`;
+
+const Title = styled.h1`
+	font-size: 3rem;
+	font-weight: bold;
+	color: ${(props) => props.theme.accentColor};
+	margin-bottom: 1rem;
+`;
 
 const ToDoList = () => {
 	/* const [toDos, setToDos] = useRecoilState(toDoState); // get + modify value
@@ -12,15 +29,14 @@ const ToDoList = () => {
 	const modFn = useSetRecoilState(toDoState); // Modify value of atom */
 	const toDos = useRecoilValue(toDoSelector);
 	return (
-		<div>
-			<h1>To Dos</h1>
-			<hr />
+		<ToDoPage>
+			<Title>To Dos</Title>
 			<SelectCategory />
 			<CreateToDo />
 			{toDos.map((toDo) => (
 				<ToDo key={toDo.id} {...toDo} />
 			))}
-		</div>
+		</ToDoPage>
 	);
 };
 

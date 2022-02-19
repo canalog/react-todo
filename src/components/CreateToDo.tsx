@@ -16,11 +16,9 @@ const ToDoInput = styled.input`
 	width: 20rem;
 	height: 4rem;
 	font-size: 1.3rem;
-	border-radius: 2rem;
+	border-radius: 20px;
 	border: none;
-	&::placeholder {
-		color: gray;
-	}
+	box-shadow: 4px 4px ${(props) => props.theme.accentColor};
 `;
 
 const ToDoButton = styled.button`

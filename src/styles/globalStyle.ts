@@ -17,8 +17,7 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
-	font: inherit;
+	font-size: 1.2rem;
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -28,6 +27,7 @@ footer, header, hgroup, menu, nav, section {
 }
 *{
   box-sizing: border-box;
+	font-family: 'Sacramento', cursive;
 }
 body {
 	line-height: 1;
