@@ -1,7 +1,7 @@
 import React from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { Categories, categoryState, toDoSelector } from "../atoms";
+import { toDoSelector } from "../atoms";
 
 import CreateToDo from "./CreateToDo";
 import SelectCategory from "./SelectCategory";
