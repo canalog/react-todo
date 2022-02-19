@@ -13,12 +13,20 @@ const ToDo = ({ text, category, id }: IToDo) => {
 			const newToDo = { text, id, category: name as IToDo["category"] };
 			const newToDos = [...oldToDos];
 			newToDos.splice(targetIndex, 1, newToDo);
+			localStorage.setItem("ToDos", JSON.stringify(newToDos));
 			return newToDos;
 			// return [
 			// 	...oldToDos.slice(0, targetIndex),
 			// 	newToDo,
 			// 	...oldToDos.slice(targetIndex + 1),
 			// ];
+		});
+	};
+	const onClickDelete = () => {
+		setToDos((oldToDos) => {
+			const newToDos = oldToDos.filter((toDo) => toDo.id !== id);
+			localStorage.setItem("ToDos", JSON.stringify(newToDos));
+			return newToDos;
 		});
 	};
 	return (
@@ -39,6 +47,7 @@ const ToDo = ({ text, category, id }: IToDo) => {
 					Done
 				</button>
 			)}
+			{<button onClick={onClickDelete}>Delete</button>}
 		</li>
 	);
 };
